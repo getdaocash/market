@@ -23,11 +23,14 @@ import {
   AlertIcon,
   Divider,
 } from "@chakra-ui/react";
-import { AccountButton } from "../../shared/AccountButton";
+
+import { AccountButton } from "components/shared/AccountButton";
 import { useIsSmallScreen } from "hooks/useIsSmallScreen";
-import { networkData, chainIdOrder } from "../../../constants/networkData";
+
 import { useRari } from "context/RariContext";
-import { CHAIN_ID } from "../../../utils/chainId";
+import { chainIdOrder, networkData } from "constants/networkData";
+import { CHAIN_ID } from "utils/chainId";
+
 
 const selectedNetworkBorder = "1px solid #DF2EAC";
 

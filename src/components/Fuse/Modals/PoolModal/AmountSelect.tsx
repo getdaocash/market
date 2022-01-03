@@ -27,31 +27,26 @@ import { UseQueryResult, useQuery, useQueryClient } from "react-query";
 import { HashLoader } from "react-spinners";
 
 import { useTranslation } from "react-i18next";
-import { useRari } from "../../../../../context/RariContext";
-import { fetchTokenBalance } from "../../../../../hooks/useTokenBalance";
-import { BN, smallUsdFormatter } from "../../../../../utils/bigUtils";
 
-import DashboardBox from "../../../../shared/DashboardBox";
 
 import { Mode } from ".";
 
-import {
-  ETH_TOKEN_DATA,
-  useTokenData,
-} from "../../../../../hooks/useTokenData";
-import { useBorrowLimit } from "../../../../../hooks/useBorrowLimit";
 
-import Fuse from "../../../../../fuse-sdk";
-import { USDPricedFuseAsset } from "../../../../../utils/fetchFusePoolData";
-import { createComptroller } from "../../../../../utils/createComptroller";
-import { handleGenericError } from "../../../../../utils/errorHandling";
-import { ComptrollerErrorCodes } from "../../FusePoolEditPage";
-import { SwitchCSS } from "../../../../shared/SwitchCSS";
 
-import {
-  convertMantissaToAPR,
-  convertMantissaToAPY,
-} from "../../../../../utils/apyUtils";
+import Fuse from "fuse-sdk";
+
+import { useRari } from "context/RariContext";
+import DashboardBox from "components/shared/DashboardBox";
+import { BN, smallUsdFormatter } from "utils/bigUtils";
+import { fetchTokenBalance } from "hooks/useTokenBalance";
+import { ComptrollerErrorCodes } from "components/Fuse/FusePoolEditPage";
+import { USDPricedFuseAsset } from "utils/fetchFusePoolData";
+import { createComptroller } from "utils/createComptroller";
+import { handleGenericError } from "utils/errorHandling";
+import { SwitchCSS } from "components/shared/SwitchCSS";
+import { convertMantissaToAPR, convertMantissaToAPY } from "utils/apyUtils";
+import { useBorrowLimit } from "hooks/useBorrowLimit";
+import { ETH_TOKEN_DATA, useTokenData } from "hooks/useTokenData";
 
 enum UserAction {
   NO_ACTION,

@@ -18,45 +18,49 @@ import {
 
 import { SearchIcon } from "@chakra-ui/icons";
 import { useIsSmallScreen } from "hooks/useIsSmallScreen";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
-import { useDebounce } from "../../../hooks/useDebounce";
+import { useDebounce } from "../../hooks/useDebounce";
 import { useEffect } from "react";
 
 export const FuseDashNav = (props: any) => {
-  let navigate = useNavigate();
+  const router = useRouter();
 
   const [createPoolModal, setCreatePoolModal] = useState(false);
   const [searchText, setSearchText] = useState(() => {
-    const query = new URLSearchParams(window.location.search);
-    return query.get("filter") ?? "";
+    if (typeof window !== "undefined") {
+      const query = new URLSearchParams(window.location.search);
+      return query.get("filter") ?? "";
+    }
   });
   const debouncedSearchTerm = useDebounce(searchText, 400);
   const [sortBy, setSortBy] = useState(() => {
-    const query = new URLSearchParams(window.location.search);
-    return query.get("sort") ?? "";
+    if (typeof window !== "undefined") {
+      const query = new URLSearchParams(window.location.search);
+      return query.get("sort") ?? "";
+    }
   });
 
   useEffect(() => {
-    const value = encodeURIComponent(debouncedSearchTerm);
+    const value = encodeURIComponent(debouncedSearchTerm as string);
 
     if (value) {
       const urlSearchParams = new URLSearchParams(window.location.search);
       urlSearchParams.set("filter", value);
 
-      navigate("?" + urlSearchParams.toString());
+      router.push("?" + urlSearchParams.toString());
     } else {
-      navigate("");
+      router.push("");
     }
-  }, [debouncedSearchTerm, navigate]);
+  }, [debouncedSearchTerm, router.asPath]);
 
   useEffect(() => {
     const urlSearchParams = new URLSearchParams(window.location.search);
     if (sortBy) {
       urlSearchParams.set("sort", sortBy);
-      navigate("?" + urlSearchParams.toString());
+      router.push("?" + urlSearchParams.toString());
     }
-  }, [sortBy, navigate]);
+  }, [sortBy, router.asPath]);
 
   const bgColor = useColorModeValue("white", "gray.900");
   const textColor = useColorModeValue("black", "white");
@@ -131,7 +135,10 @@ export const FuseDashNav = (props: any) => {
               </InputGroup>
             </span>
           </Box>
-          <PoolButtons searchText={searchText} setSearchText={setSearchText} />
+          <PoolButtons
+            searchText={searchText as string}
+            setSearchText={setSearchText}
+          />
         </Flex>
       </Box>
     </>

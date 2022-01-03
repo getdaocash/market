@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { Modal, ModalOverlay, ModalContent, ModalBody } from "@chakra-ui/react";
 
 import AmountSelect from "./AmountSelect";
-import { MODAL_PROPS } from "../../../../shared/Modal";
-
-import { USDPricedFuseAsset } from "../../../../../utils/fetchFusePoolData";
+import { MODAL_PROPS } from "components/shared/Modal";
+import { USDPricedFuseAsset } from "utils/fetchFusePoolData";
 
 interface Props {
   isOpen: boolean;

@@ -25,21 +25,23 @@ import {
   RowOrColumn,
   useIsMobile,
 } from "utils/chakraUtils";
-import { useRari } from "../../../context/RariContext";
-import Fuse from "../../../fuse-sdk";
-import { useFusePoolData } from "../../../hooks/useFusePoolData";
-import { useIsSemiSmallScreen } from "../../../hooks/useIsSemiSmallScreen";
-import { useTokenData } from "../../../hooks/useTokenData";
-import { shortUsdFormatter } from "../../../utils/bigUtils";
-import { FuseUtilizationChartOptions } from "../../../utils/chartOptions";
-import { createComptroller } from "../../../utils/createComptroller";
-import { USDPricedFuseAsset } from "../../../utils/fetchFusePoolData";
-import { shortAddress } from "../../../utils/shortAddress";
-import CaptionedStat from "../../shared/CaptionedStat";
-import { ModalDivider } from "../../shared/Modal";
+import { useRari } from "context/RariContext";
+
+import Fuse from "fuse-sdk";
+
 import { PoolDashboardBox } from "./FusePoolPage";
 import FuseStatsBar from "./FuseStatsBar";
 import FuseTabBar from "./FuseTabBar";
+import { useIsSemiSmallScreen } from "hooks/useIsSemiSmallScreen";
+import { shortUsdFormatter } from "utils/bigUtils";
+import { ModalDivider } from "components/shared/Modal";
+import { useTokenData } from "hooks/useTokenData";
+import CaptionedStat from "components/shared/CaptionedStat";
+import { USDPricedFuseAsset } from "utils/fetchFusePoolData";
+import { FuseUtilizationChartOptions } from "utils/chartOptions";
+import { shortAddress } from "utils/shortAddress";
+import { useFusePoolData } from "hooks/useFusePoolData";
+import { createComptroller } from "utils/createComptroller";
 
 export const useExtraPoolInfo = (comptrollerAddress: string) => {
   const { fuse, address } = useRari();
