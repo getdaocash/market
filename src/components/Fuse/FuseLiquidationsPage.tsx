@@ -26,8 +26,8 @@ import {
   useIsMobile,
 } from "utils/chakraUtils";
 import { filterOnlyObjectProperties, FuseAsset } from "utils/fetchFusePoolData";
-import DashboardBox from "../../shared/DashboardBox";
-import { ModalDivider } from "../../shared/Modal";
+import DashboardBox from "components/shared/DashboardBox";
+import { ModalDivider } from "components/shared/Modal";
 import CTokenIcon from "./CTokenIcon";
 import FuseNavbar from "./FuseNavbar";
 import FuseStatsBar from "./FuseStatsBar";

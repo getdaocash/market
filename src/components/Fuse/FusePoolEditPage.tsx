@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Row } from "utils/chakraUtils";
-import DashboardBox from "../../shared/DashboardBox";
+import DashboardBox from "../shared/DashboardBox";
 
 export enum ComptrollerErrorCodes {
   NO_ERROR,

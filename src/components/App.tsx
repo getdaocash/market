@@ -7,14 +7,14 @@ import Layout from "./shared/Layout";
 import { AnimatePresence } from "framer-motion";
 
 const FusePoolsPage = loadable(
-  () => import(/* webpackPrefetch: true */ "./pages/Fuse/FusePoolsPage"),
+  () => import(/* webpackPrefetch: true */ "./Fuse/FusePoolsPage"),
   {
     fallback: <FullPageSpinner />,
   }
 );
 
 const FusePoolPage = loadable(
-  () => import(/* webpackPrefetch: true */ "./pages/Fuse/FusePoolPage"),
+  () => import(/* webpackPrefetch: true */ "./Fuse/FusePoolPage"),
   {
     fallback: <FullPageSpinner />,
   }
@@ -28,7 +28,7 @@ const FusePoolPage = loadable(
 // );
 
 const FuseLiquidationsPage = loadable(
-  () => import(/* webpackPrefetch: true */ "./pages/Fuse/FuseLiquidationsPage"),
+  () => import(/* webpackPrefetch: true */ "./Fuse/FuseLiquidationsPage"),
   {
     fallback: <FullPageSpinner />,
   }

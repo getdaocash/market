@@ -13,6 +13,8 @@ import { useTranslation } from "react-i18next";
 
 import Rari from "../rari-sdk/index";
 
+import { useRouter } from "next/router";
+
 import LogRocket from "logrocket";
 import { useToast } from "@chakra-ui/react";
 import Fuse from "../fuse-sdk/src";
@@ -92,8 +94,9 @@ export const RariContext = createContext<RariContextData | undefined>(
 export const RariProvider = ({ children }: { children: ReactNode }) => {
   const { t } = useTranslation();
 
-  const location = useLocation();
+  const router = useRouter();
 
+  const location = router.asPath.replace("/", "");
   const [rari, setRari] = useState<Rari>(
     () => new Rari(chooseBestWeb3Provider())
   );
@@ -148,9 +151,7 @@ export const RariProvider = ({ children }: { children: ReactNode }) => {
         }
 
         const address = addresses[0];
-        const requestedAddress = new URLSearchParams(location.search).get(
-          "address"
-        );
+        const requestedAddress = new URLSearchParams(location).get("address");
 
         console.log("Setting Logrocket user to new address: " + address);
         LogRocket.identify(address);
@@ -159,7 +160,7 @@ export const RariProvider = ({ children }: { children: ReactNode }) => {
         setAddress(requestedAddress ?? address);
       });
     },
-    [setRari, setAddress, location.search]
+    [setRari, setAddress, location]
   );
 
   const login = useCallback(

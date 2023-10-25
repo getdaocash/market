@@ -24,9 +24,11 @@ import { shortAddress } from "../../utils/shortAddress";
 import { useTranslation } from "react-i18next";
 import { LanguageSelect } from "./TranslateButton";
 
-import { version } from "../..";
+import { version } from "../../../package.json";
 
-import MoonpayModal from "../pages/MoonpayModal";
+// import { version } from "..";
+
+import MoonpayModal from "components/MoonpayModal";
 import { useIsSmallScreen } from "../../hooks/useIsSmallScreen";
 import { useAuthedCallback } from "../../hooks/useAuthedCallback";
 import { networkData } from "constants/networkData";

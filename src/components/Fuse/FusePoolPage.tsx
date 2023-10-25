@@ -73,7 +73,8 @@ import { Link } from "react-router-dom";
 import PageTransitionLayout from "components/shared/PageTransitionLayout";
 import { SimpleTooltip } from "components/shared/SimpleTooltip";
 import { CHAIN_ID } from "utils/chainId";
-import { networkData } from "../../../constants/networkData";
+import { networkData } from "constants/networkData";
+
 
 const StatLabel = (props: StatLabelProps) => (
   <ChakraStatLabel

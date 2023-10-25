@@ -6,27 +6,32 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { RowOrColumn, Row, Center, useWindowSize } from "utils/chakraUtils";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { useIsSmallScreen } from "../../../hooks/useIsSmallScreen";
-import DashboardBox from "../../shared/DashboardBox";
+
+import DashboardBox from "components/shared/DashboardBox";
+import { useIsSmallScreen } from "hooks/useIsSmallScreen";
 import { Link as RouterLink } from "react-router-dom";
 
 const activeStyle = { bg: "#2f2f2f", color: "white" };
 
+
 const noop = {};
 
+
 export function useFilter() {
-  return new URLSearchParams(useLocation().search).get("filter");
+  return new URLSearchParams(useRouter().asPath.replace("/", "")).get("filter");
 }
 
 export function useSort() {
-  return new URLSearchParams(useLocation().search).get("sort");
+  return new URLSearchParams(useRouter().asPath.replace("/", "")).get("sort");
 }
 
 function useIsMediumScreen() {
   const { width } = useWindowSize();
+  if(width)
   return width < 1150;
 }
 const FuseTabBar = () => {
